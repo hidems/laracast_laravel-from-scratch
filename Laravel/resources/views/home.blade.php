@@ -17,6 +17,22 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+            <div class="my-3">
+                <h1>My Site</h1>
+
+                @can('edit_forum')
+                <li>
+                    <a href="#">Edit Forum</a>
+                </li>
+                @endcan
+
+                @can('view_reports')
+                <li>
+                    <a href="/reports">View Reports</a>
+                </li>
+                @endcan
+
+            </div>
         </div>
     </div>
 </div>

@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// auth()->loginUsingId(19);
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Simplework ~ Articles
 Route::get('/simplework', function () {
     return view('simplework');
 });
@@ -35,6 +38,27 @@ Route::get('simplework/articles/create', 'ArticlesController@create'); // It mus
 Route::get('/simplework/articles/{article}', 'ArticlesController@show')->name('articles.show');
 Route::get('/simplework/articles/{article}/edit', 'ArticlesController@edit');
 Route::put('/simplework/articles/{article}', 'ArticlesController@update');
+
+// Mail
+Route::get('/contact', 'ContactController@show');
+Route::post('/contact', 'ContactController@store');
+
+// Notification
+Route::get('payments/create', 'PaymentsController@create')->middleware('auth');
+Route::post('payments', 'PaymentsController@store')->middleware('auth');
+Route::get('notifications', 'UserNotificationsController@show')->middleware('auth');
+
+// Conversation
+Route::get('conversations', 'ConversationsController@index');
+Route::get('conversations/{conversation}', 'ConversationsController@show');
+// Authorize by CoversationPolicy::view
+// Route::get('conversations/{conversation}', 'ConversationsController@show')->middleware('can:view,conversation');
+Route::post('best-replies/{reply}', 'ConversationBestReplyController@store');
+
+// Role and Ability
+Route::get('/reports', function () {
+    return 'the secret reports';
+})->middleware('can:view_reports');
 
 // Test page to show only name in URL (Ex. http://192.168.33.11/request?name=John)
 Route::get('request', function () {

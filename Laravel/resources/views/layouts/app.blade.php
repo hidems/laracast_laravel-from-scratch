@@ -17,8 +17,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    {{-- <link href="{{ asset('/public/css/app.css') }}" rel="stylesheet" type="text/css"> --}}
+    <link href="{{ asset('../css/app.css') }}" rel="stylesheet" type="text/css">
     {{-- <link href="../css/app.css" rel="stylesheet" type="text/css"> --}}
+
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
 </head>
 <body>
